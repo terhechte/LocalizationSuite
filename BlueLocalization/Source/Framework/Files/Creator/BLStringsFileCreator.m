@@ -78,7 +78,7 @@
 	
 	// Detect slave mode
 	if ([self optionIsActive: BLFileCreatorSlaveMode]) {
-		return [dict writeKeysAsStrings:keys withComments:comments toPath:path usingEncoding:encoding];
+		return [dict writeKeysAsStrings:keys withComments:nil toPath:path usingEncoding:encoding];
 	}
 	
 	// Check for reference file
