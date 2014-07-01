@@ -239,11 +239,17 @@ CGFloat			LTTranslationCheckerMaxLengthDeviation	= 50;
 	[endSet invert];
 	
 	origEnd = NSMaxRange([original rangeOfCharacterFromSet:whiteSet options:NSBackwardsSearch]);
+	origEnd = (origEnd == NSNotFound ? 0 : origEnd);
+	
 	origRange.location = NSMaxRange([original rangeOfCharacterFromSet:endSet options:NSBackwardsSearch range:NSMakeRange(0, origEnd)]);
+	origRange.location = (origRange.location == NSNotFound ? 0 : origRange.location);
 	origRange.length = origEnd - origRange.location;
 	
 	transEnd = NSMaxRange([translated rangeOfCharacterFromSet:whiteSet options:NSBackwardsSearch]);
+	transEnd = (transEnd == NSNotFound ? 0 : transEnd);
+	
 	transRange.location = NSMaxRange([translated rangeOfCharacterFromSet:endSet options:NSBackwardsSearch range:NSMakeRange(0, transEnd)]);
+	transRange.location = (transRange.location == NSNotFound ? 0 : transRange.location);
 	transRange.length = transEnd - transRange.location;
 	
 	transWhitespace = [translated substringFromIndex: transEnd];
